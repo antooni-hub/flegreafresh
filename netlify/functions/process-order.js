@@ -1,6 +1,6 @@
 // Configurazione
-const TELEGRAM_BOT_TOKEN = '8082633997:AAE8qjz1sEETjQbF3xtF9e7jl_qMv-pyD9w';
-const TELEGRAM_CHAT_ID = '645276435';
+const TELEGRAM_BOT_TOKEN = process.envTELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.envTELEGRAM_CHAT_ID;
 
 exports.handler = async (event, context) => {
   // Gestisce solo richieste POST
