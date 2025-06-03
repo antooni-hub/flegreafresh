@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spesa a domicilio nei Campi Flegrei: prodotti freschi, locali e di qualità. Sito accessibile e facile da usare per tutti.">
+    <title>FlegreaFresh - Spesa a Domicilio Campi Flegrei</title>
+    <!-- Sostituisci il blocco <style> con questa versione per avere tutte le tonalità di blu (eccetto lo sfondo che resta bianco) -->
+
+<style>
+    :root {
+        --main-blue: #2b3a3a;
+        --main-green: #6ea77a;
+        --main-light: #eaf3ee;
+        --main-accent: #f7c873;
+        --main-white: #fff;
+        --focus-outline: #005fcc;
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+    body {
+        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        line-height: 1.7;
+        color: var(--main-blue);
+        background: linear-gradient(135deg, var(--main-light) 0%, var(--main-green) 100%);
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 8px;
+    }
+
+    .header, .footer {
+        background: var(--main-white);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+
+    .logo img {
+        height: 60px;
+        width: auto;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        background: #fff;
+    }
+
+    .hero {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        margin: 2rem auto;
+        padding: 3rem 2rem;
+        text-align: center;
+        color: var(--main-blue);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--main-blue);
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        color: var(--main-blue);
+    }
+
+    .order-form {
+        max-width: 1300px;
+        margin: 2rem auto;
+        padding: 2.5rem 2rem;
+        background: var(--main-white);
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .form-section {
+        margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+        color: var(--main-green);
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--main-green);
+        padding-bottom: 0.5rem;
+        font-size: 1.4rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--main-blue);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid #e1e5e9;
+        border-radius: 10px;
+        font-size: 1rem;
+        background: var(--main-light);
+        color: var(--main-blue);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus,
+    .btn:focus {
+        outline: 3px solid var(--focus-outline);
+        outline-offset: 2px;
+        border-color: var(--main-green);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .product-category {
+        background: var(--main-light);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border: 2px solid transparent;
+    }
+
+    .product-category h4 {
+        color: var(--main-green);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .category-icon {
+        font-size: 1.5rem;
+    }
+
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+    }
+
+    .product-item {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0.7rem;
+        background: var(--main-white);
+        border-radius: 14px;
+        border: 1px solid #eee;
+        min-width: 0;
+    }
+
+    .product-item > span {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .product-item select,
+    .product-item input[type="number"] {
+        margin-bottom: 0.4rem;
+        min-width: 0;
+    }
+
+    .quantity-input {
+        width: 100%;
+        border-radius: 22px !important;
+        font-size: 1.1rem;
+        padding: 8px 0;
+        text-align: center;
+        border: 1.5px solid var(--main-blue);
+        background: var(--main-white);
+        box-shadow: 0 2px 8px rgba(43,58,58,0.04);
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .quantity-input:focus {
+        border-color: var(--main-green);
+    }
+
+    .time-slot {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .time-option {
+        padding: 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        background: var(--main-white);
+        color: var(--main-blue);
+    }
+
+    .time-option input[type="radio"] {
+        margin-right: 0.5em;
+    }
+
+    .time-option:focus-within {
+        outline: 3px solid var(--focus-outline);
+        outline-offset: 2px;
+    }
+
+    .order-summary {
+        background: linear-gradient(135deg, var(--main-green), var(--main-blue));
+        color: var(--main-white);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 2rem;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn {
+        background: linear-gradient(135deg, var(--main-green), var(--main-blue));
+        color: var(--main-white);
+        border: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(110, 167, 122, 0.18);
+    }
+
+    .btn:hover,
+    .btn:focus {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(110, 167, 122, 0.22);
+        background: var(--main-green);
+        color: var(--main-white);
+    }
+
+    .btn-primary {
+        width: 100%;
+        font-size: 1.3rem;
+        padding: 20px;
+        margin-top: 2rem;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .feature {
+        background: var(--main-white);
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+        color: var(--main-blue);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer {
+        background: var(--main-blue);
+        color: var(--main-white);
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+    }
+
+    @media (max-width: 900px) {
+        html { font-size: 16px; }
+        .form-row { grid-template-columns: 1fr; }
+        .product-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        html { font-size: 15px; }
+        .order-form { padding: 1rem 0.2rem; }
+        .features { grid-template-columns: 1fr; }
+    }
+
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--main-green);
+        color: var(--main-white);
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.13);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+
+    .notification.show {
+        transform: translateX(0);
+    }
+
+    /* Accessibilità: nascondi solo visivamente, non agli screen reader */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+    }
+</style>
+</head>
+<body>
+    <!-- LOGO -->
+<header class="header" role="banner">
+    <div class="container">
+        <div class="header-content">
+            <a href="#" class="logo" aria-label="Homepage FlegreaFresh">
+                <img src="fflogo.png" alt="Logo FlegreaFresh" />
+                <span style="color: #2b3a3a;">FlegreaFresh</span>
+            </a>
+            <div>
+                <span aria-label="Telefono">📞 081-123-4567</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Spesa a Domicilio nei Campi Flegrei</h1>
+            <p>Consegniamo la tua spesa direttamente a casa. Prodotti freschi, locali e di qualità a Pozzuoli, Bacoli e Monte di Procida.</p>
+        </section>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🚚</div>
+                <h3>Consegna Rapida</h3>
+                <p>Consegniamo in giornata o quando preferisci</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🥬</div>
+                <h3>Prodotti Freschi</h3>
+                <p>Frutta, verdura e prodotti locali di prima qualità</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>Servizio Personalizzato</h3>
+                <p>Attenzione ai dettagli e alle tue esigenze specifiche</p>
+            </div>
+        </div>
+
+        <form class="order-form" id="orderForm" aria-label="Modulo ordine spesa a domicilio">
+            <div class="form-section">
+                <h3>📋 I Tuoi Dati</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome e Cognome <span aria-hidden="true">*</span></label>
+                        <input type="text" id="nome" name="nome" required autocomplete="name" aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Telefono *</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>📍 Indirizzo di Consegna</h3>
+                <div class="form-group">
+                    <label for="citta">Città *</label>
+                    <select id="citta" name="citta" required>
+                        <option value="">Seleziona città</option>
+                        <option value="pozzuoli">Pozzuoli</option>
+                        <option value="bacoli">Bacoli</option>
+                        <option value="monte-procida">Monte di Procida</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="indirizzo">Via/Indirizzo *</label>
+                        <input type="text" id="indirizzo" name="indirizzo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="civico">Numero Civico *</label>
+                        <input type="text" id="civico" name="civico" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="note-indirizzo">Note per la consegna</label>
+                    <textarea id="note-indirizzo" name="note-indirizzo" rows="2" placeholder="Es: Citofono, piano, note particolari..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>🛍️ Come vuoi fare la spesa?</h3>
+                <div class="form-group">
+                    <label for="tipo-spesa">Dove preferisci che facciamo la spesa?</label>
+                    <select id="tipo-spesa" name="tipo-spesa" required>
+                        <option value="">Seleziona preferenza</option>
+                        <option value="supermercato">Supermercato (più economico)</option>
+                        <option value="negozi-specializzati">Negozi specializzati (fruttivendolo, pescheria, macelleria)</option>
+                        <option value="misto">Misto (supermercato + specializzati per prodotti freschi)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="preferenza-spesa">Preferenza di acquisto</label>
+                    <select id="preferenza-spesa" name="preferenza-spesa" required>
+                        <option value="">Seleziona preferenza</option>
+                        <option value="qualita">Prediligo la qualità</option>
+                        <option value="equilibrio">Equilibrio qualità/prezzo</option>
+                        <option value="offerte">Prediligo offerte e risparmio</option>
+                    </select>
+                </div>
+                <div class="form-group" id="negozi-specifici" style="display: none;">
+                    <label for="negozi-preferiti">Negozi specifici che preferisci</label>
+                    <textarea id="negozi-preferiti" name="negozi-preferiti" rows="2" placeholder="Es: Fruttivendolo Mario in Via Roma, Pescheria del Porto..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>🛍️ Cosa ti serve?</h3>
+                
+                <!-- Frutta e Verdura -->
+                <div class="product-category">
+                    <h4><span class="category-icon">🥬</span> Frutta e Verdura</h4>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <span>Pomodori</span>
+                            <select name="pomodori_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pomodori_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Mele</span>
+                            <select name="mele_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="mele_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Banane</span>
+                            <select name="banane_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="banane_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Insalata mista</span>
+                            <select name="insalata_grammatura">
+                                <option value="1pz">1 pz</option>
+                                <option value="2pz">2 pz</option>
+                                <option value="3pz">3 pz</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="insalata_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Arance</span>
+                            <select name="arance_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="arance_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pere</span>
+                            <select name="pere_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pere_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Fragole</span>
+                            <select name="fragole_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="fragole_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Kiwi</span>
+                            <select name="kiwi_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="kiwi_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Patate</span>
+                            <select name="patate_grammatura">
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="patate_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Zucchine</span>
+                            <select name="zucchine_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="zucchine_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Melanzane</span>
+                            <select name="melanzane_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="melanzane_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Peperoni</span>
+                            <select name="peperoni_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="peperoni_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="frutta-altro">Altro (specifica prodotto e quantità):</label>
+                        <textarea id="frutta-altro" name="frutta-altro" rows="2" placeholder="Es: 1kg pesche, 500g fragole..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Latticini e Uova -->
+                <div class="product-category">
+                    <h4><span class="category-icon">🥛</span> Latticini e Uova</h4>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <span>Latte</span>
+                            <select name="latte_grammatura">
+                                <option value="1L">1L</option>
+                                <option value="2L">2L</option>
+                                <option value="3L">3L</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="latte_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Mozzarella di bufala</span>
+                            <select name="mozzarella_grammatura">
+                                <option value="125g">125g</option>
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="mozzarella_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Uova</span>
+                            <select name="uova_grammatura">
+                                <option value="6pz">6 pz</option>
+                                <option value="12pz">12 pz</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="uova_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Parmigiano</span>
+                            <select name="parmigiano_grammatura">
+                                <option value="100g">100g</option>
+                                <option value="200g">200g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="parmigiano_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Ricotta</span>
+                            <select name="ricotta_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="ricotta_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Yogurt</span>
+                            <select name="yogurt_grammatura">
+                                <option value="125g">125g</option>
+                                <option value="250g">250g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="yogurt_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Burro</span>
+                            <select name="burro_grammatura">
+                                <option value="125g">125g</option>
+                                <option value="250g">250g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="burro_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Provola</span>
+                            <select name="provola_grammatura">
+                                <option value="200g">200g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="provola_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Scamorza</span>
+                            <select name="scamorza_grammatura">
+                                <option value="200g">200g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="scamorza_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Fior di latte</span>
+                            <select name="fiordilatte_grammatura">
+                                <option value="200g">200g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="fiordilatte_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Panna</span>
+                            <select name="panna_grammatura">
+                                <option value="200ml">200ml</option>
+                                <option value="500ml">500ml</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="panna_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Formaggio spalmabile</span>
+                            <select name="spalmabile_grammatura">
+                                <option value="150g">150g</option>
+                                <option value="250g">250g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="spalmabile_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="latticini-altro">Altro (specifica prodotto e quantità):</label>
+                        <textarea id="latticini-altro" name="latticini-altro" rows="2" placeholder="Es: yogurt greco, ricotta..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Pane e Pasta -->
+                <div class="product-category">
+                    <h4><span class="category-icon">🍞</span> Pane e Pasta</h4>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <span>Pane cafone</span>
+                            <select name="pane_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pane_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pasta</span>
+                            <select name="pasta_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pasta_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Panini</span>
+                            <select name="panini_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="panini_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Farina</span>
+                            <select name="farina_grammatura">
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="farina_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Grissini</span>
+                            <select name="grissini_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="grissini_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Crackers</span>
+                            <select name="crackers_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="crackers_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Fette biscottate</span>
+                            <select name="fettebiscottate_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="fettebiscottate_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pane integrale</span>
+                            <select name="paneintegrale_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="paneintegrale_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pasta integrale</span>
+                            <select name="pastaintegrale_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pastaintegrale_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Taralli</span>
+                            <select name="taralli_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="taralli_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Biscotti</span>
+                            <select name="biscotti_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="biscotti_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pane senza glutine</span>
+                            <select name="panesenzaglutine_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="panesenzaglutine_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pane-altro">Altro (specifica prodotto e quantità):</label>
+                        <textarea id="pane-altro" name="pane-altro" rows="2" placeholder="Es: pane integrale, pasta fresca..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Pesce e Carne -->
+                <div class="product-category">
+                    <h4><span class="category-icon">🐟</span> Pesce e Carne</h4>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <span>Merluzzo fresco</span>
+                            <select name="merluzzo_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="merluzzo_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Orata fresca</span>
+                            <select name="orata_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="orata_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Cozze</span>
+                            <select name="cozze_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="cozze_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pollo</span>
+                            <select name="pollo_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                                <option value="2kg">2kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pollo_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Vitello</span>
+                            <select name="vitello_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="vitello_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Salsicce</span>
+                            <select name="salsicce_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="salsicce_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Gamberi</span>
+                            <select name="gamberi_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="gamberi_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Calamari</span>
+                            <select name="calamari_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="calamari_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Tonno fresco</span>
+                            <select name="tonno_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="tonno_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Spigola</span>
+                            <select name="spigola_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="spigola_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Manzo</span>
+                            <select name="manzo_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="manzo_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Hamburger</span>
+                            <select name="hamburger_grammatura">
+                                <option value="2pz">2 pz</option>
+                                <option value="4pz">4 pz</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="hamburger_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pesce-altro">Altro (specifica prodotto e quantità):</label>
+                        <textarea id="pesce-altro" name="pesce-altro" rows="2" placeholder="Es: calamari, gamberi..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Surgelati -->
+                <div class="product-category">
+                    <h4><span class="category-icon">🧊</span> Surgelati</h4>
+                    <div class="product-list">
+                        <div class="product-item">
+                            <span>Verdure miste</span>
+                            <select name="verdure_surgelate_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="verdure_surgelate_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pesce spada</span>
+                            <select name="pesce_spada_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pesce_spada_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Pizza surgelata</span>
+                            <select name="pizza_grammatura">
+                                <option value="1pz">1 pz</option>
+                                <option value="2pz">2 pz</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="pizza_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Gelato</span>
+                            <select name="gelato_grammatura">
+                                <option value="500ml">500ml</option>
+                                <option value="1L">1L</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="gelato_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Patatine fritte</span>
+                            <select name="patatine_grammatura">
+                                <option value="500g">500g</option>
+                                <option value="1kg">1kg</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="patatine_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                        <div class="product-item">
+                            <span>Bastoncini di pesce</span>
+                            <select name="bastoncini_grammatura">
+                                <option value="250g">250g</option>
+                                <option value="500g">500g</option>
+                            </select>
+                            <input type="number" class="quantity-input" name="bastoncini_quantita" min="0" value="0" placeholder="Qtà">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>📅 Quando vuoi ricevere la spesa?</h3>
+                <div class="form-group">
+                    <label for="data-consegna">Data di Consegna *</label>
+                    <input type="date" id="data-consegna" name="data-consegna" required>
+                </div>
+                <div class="form-group">
+                    <label for="ora-consegna">Fascia Oraria *</label>
+                    <div class="time-slot">
+                        <div class="time-option" data-value="mattina">
+                            <input type="radio" name="ora-consegna" value="mattina" id="ora-mattina">
+                            <label for="ora-mattina">Mattina</label>
+                        </div>
+                        <div class="time-option" data-value="pomeriggio">
+                            <input type="radio" name="ora-consegna" value="pomeriggio" id="ora-pomeriggio">
+                            <label for="ora-pomeriggio">Pomeriggio</label>
+                        </div>
+                        <div class="time-option" data-value="sera">
+                            <input type="radio" name="ora-consegna" value="sera" id="ora-sera">
+                            <label for="ora-sera">Sera</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>💳 Metodo di Pagamento</h3>
+                <div class="form-group">
+                    <label for="pagamento">Come vuoi pagare?</label>
+                    <select id="pagamento" name="pagamento" required>
+                        <option value="">Seleziona metodo</option>
+                        <option value="contanti">Contanti alla consegna</option>
+                        <option value="carta">Carta alla consegna</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h3>📝 Riepilogo Ordine</h3>
+                <div class="summary-row">
+                    <span>Costo consegna:</span>
+                    <span>€3,00</span>
+                </div>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">
+                    * Il prezzo finale sarà comunicato prima della consegna
+                </p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">🚚 Invia Richiesta di Consegna</button>
+        </form>
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2025 FlegreaFresh - Spesa a Domicilio Campi Flegrei</p>
+            <p>📞 081-123-4567 | 📧 info@flegreafresh.it</p>
+        </div>
+    </footer>
+
+    <div class="notification" id="notification">
+        Ordine ricevuto! Ti contatteremo presto per confermare la consegna.
+    </div>
+
+    <script>
+        // Migliora la navigazione con tastiera per le opzioni orarie
+        document.querySelectorAll('.time-option').forEach(option => {
+            option.tabIndex = 0;
+            option.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    this.querySelector('input[type="radio"]').checked = true;
+                }
+            });
+        });
+
+        // Mostra/nascondi i negozi specifici in base alla scelta del tipo di spesa
+        document.getElementById('tipo-spesa').addEventListener('change', function() {
+            const valore = this.value;
+            const divNegozi = document.getElementById('negozi-specifici');
+            if (valore === 'negozi-specializzati' || valore === 'misto') {
+                divNegozi.style.display = 'block';
+            } else {
+                divNegozi.style.display = 'none';
+            }
+        });
+
+        // Invia il modulo
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validazione base
+            const nome = document.getElementById('nome').value;
+            const telefono = document.getElementById('telefono').value;
+            const citta = document.getElementById('citta').value;
+            const indirizzo = document.getElementById('indirizzo').value;
+            const tipoSpesa = document.getElementById('tipo-spesa').value;
+            const orario = document.getElementById('orario-selezionato').value;
+            const pagamento = document.getElementById('pagamento').value;
+            
+            if (!nome || !telefono || !citta || !indirizzo || !tipoSpesa || !orario || !pagamento) {
+                alert('Compila tutti i campi obbligatori!');
+                return;
+            }
+            
+            // Raccogli dati prodotti avanzati
+            const prodotti = [];
+            document.querySelectorAll('.product-item').forEach(item => {
+                const nome = item.querySelector('span').innerText;
+                const grammatura = item.querySelector('select').value;
+                const quantita = item.querySelector('input[type="number"]').value;
+                if (quantita > 0) {
+                    prodotti.push({
+                        nome,
+                        grammatura,
+                        quantita
+                    });
+                }
+            });
+            // Raccogli marche preferite
+            const marchePreferite = document.getElementById('marche-preferite').value.trim();
+            // Raccogli "Altro" per ogni categoria
+            const altriProdotti = [];
+            ['frutta-altro', 'latticini-altro', 'pane-altro', 'pesce-altro', 'surgelati-altro'].forEach(id => {
+                const val = document.getElementById(id);
+                if (val && val.value.trim() !== '') {
+                    altriProdotti.push(val.value.trim());
+                }
+            });
+
+            // Mostra un messaggio di conferma (puoi sostituire con una chiamata API per inviare l'ordine)
+            document.getElementById('notification').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('notification').classList.remove('show');
+            }, 5000);
+
+            console.log('Dati ordine:', datiOrdine);
+            // Qui puoi aggiungere il codice per inviare i dati dell'ordine a un server
+        });
+    </script>
+</body>
+</html>
