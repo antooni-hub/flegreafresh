@@ -10,3 +10,11 @@
   from = "/api/ordine"
   to = "/.netlify/functions/ordine"
   status = 200
+  force = true
+
+# Opzionale: per gestire tutte le richieste API tramite funzioni serverless
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
