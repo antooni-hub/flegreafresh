@@ -1,0 +1,7 @@
+{
+  "name": "flegreafresh",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "echo 'Nessuna build necessaria per HTML statico'"
+  }
+}
