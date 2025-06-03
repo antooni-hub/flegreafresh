@@ -1,0 +1,12 @@
+[build]
+  functions = "netlify/functions"
+  command = "npm run build"
+  publish = "public"
+
+[dev]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/ordine"
+  to = "/.netlify/functions/ordine"
+  status = 200
